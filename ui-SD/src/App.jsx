@@ -1,12 +1,18 @@
-import io from 'socket.io-client'
+import { useContext } from 'react';
 
-const socket = io('192.168.0.105:4000')
+import { SocketContext } from './context/socketContext';
+
+
+function ButtonConnect() {
+  const  socket  =   useContext(SocketContext)
 
  //emit enviar
  //on escuchar
 
 const handleClick = (e) =>{
   e.preventDefault;
+
+  console.log(socket);
 
   let JsonCONNECT = {
     "Client-ID":"1"
@@ -20,8 +26,7 @@ socket.on("CONNACK", (JsonCONNACK) => {
   
 });
 
-function ButtonConnect(){
-  return <button onClick = {handleClick}> Conectarse </button>
+  return (<button onClick = {handleClick}> Conectarse </button>);
 }
 
 export default ButtonConnect;

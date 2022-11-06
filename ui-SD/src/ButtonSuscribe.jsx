@@ -1,23 +1,31 @@
 import io from 'socket.io-client'
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useContext} from "react";
+import { SocketContext } from './context/socketContext';
 
-const socket = io('192.168.0.105:4000')
 
  //emit enviar
  //on escuchar
- 
-socket.on("SUBACK", (jsonSUBACK) => {
-  
-  console.log(jsonSUBACK);
-  
-});
+
 
 function Suscribe(){
+  const  socket  =   useContext(SocketContext);
 
-const textInput = useRef(null);
-const textInputIDClient = useRef(null);
+  socket.on("SUBACK", (jsonSUBACK) => {
+  
+    console.log(jsonSUBACK);
+    
+  });
 
-const handleClick = (e) =>{
+  socket.on("SUBACK", (jsonSUBACK) => {
+  
+    console.log(jsonSUBACK);
+    
+  });
+
+  const textInput = useRef(null);
+  const textInputIDClient = useRef(null);
+
+  const handleClick = (e) =>{
     e.preventDefault;
     let mensaje = textInput.current.value;
     let jsonSUBSCRIBE = {

@@ -1,12 +1,13 @@
 import io from 'socket.io-client'
-import React, {useRef, useState} from "react";
-
-const socket = io('192.168.0.105:4000')
+import React, {useRef, useState,useContext} from "react";
+import { SocketContext } from './context/socketContext';
 
  //emit enviar
  //on escuchar
  
 function Publish(){
+
+  const  socket  =   useContext(SocketContext);
 
 const textInput = useRef(null);
 const textInputIDClient = useRef(null);
