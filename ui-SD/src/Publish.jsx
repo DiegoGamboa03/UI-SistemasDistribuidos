@@ -14,7 +14,7 @@ const handleClick = (e) =>{
     e.preventDefault;
     let mensaje = textInput.current.value;
     let jsonPUBLISH = {
-      "Client-ID":"Diego",
+      "Client-ID":"2",
       "Topic": mensaje,
       "Message": "on"
     }
