@@ -1,7 +1,7 @@
 import io from 'socket.io-client'
 import React, {useRef, useState} from "react";
 
-const socket = io('http://localhost:4000')
+const socket = io('192.168.0.105:4000')
 
  //emit enviar
  //on escuchar
@@ -15,12 +15,13 @@ socket.on("SUBACK", (jsonSUBACK) => {
 function Suscribe(){
 
 const textInput = useRef(null);
+const textInputIDClient = useRef(null);
 
 const handleClick = (e) =>{
     e.preventDefault;
     let mensaje = textInput.current.value;
     let jsonSUBSCRIBE = {
-      "Client-ID":"Diego",
+      "Client-ID": textInputIDClient.current.value,
       "Topic": mensaje
     }
   
@@ -33,6 +34,7 @@ const [mensaje, setMensaje] = useState();
 
   return <div>
     <input ref = {textInput}></input>
+    <input ref = {textInputIDClient}></input>
     <button onClick = {handleClick}> Suscribirse </button>
   </div> 
 }

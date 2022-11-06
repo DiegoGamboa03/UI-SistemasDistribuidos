@@ -1,6 +1,6 @@
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:4000')
+const socket = io('192.168.0.105:4000')
 
  //emit enviar
  //on escuchar

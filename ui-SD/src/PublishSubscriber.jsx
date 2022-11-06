@@ -1,7 +1,7 @@
 import io from 'socket.io-client'
 import React, {useState, useEffect} from "react";
 
-const socket = io('http://localhost:4000');
+const socket = io('192.168.0.105:4000');
 
 
  //emit enviar
@@ -12,8 +12,6 @@ function PublishSubscriber(){
 
   socket.on("PUBLISH", (jsonPUBLISH) => {
     
-    setMessage(jsonPUBLISH['Message']);
-  
   });
 
   return (<div>
