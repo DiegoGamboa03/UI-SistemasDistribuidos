@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 
 import { SocketContext } from './context/socketContext';
 
@@ -6,16 +6,21 @@ import { SocketContext } from './context/socketContext';
 function ButtonConnect() {
   const  socket  =   useContext(SocketContext)
 
+  const textInputIDClient = useRef(null);
+
  //emit enviar
  //on escuchar
 
 const handleClick = (e) =>{
   e.preventDefault;
 
+  let idClient = textInputIDClient.current.value;
+
+  console.log(idClient);
   console.log(socket);
 
   let JsonCONNECT = {
-    "Client-ID":"1"
+    "Client-ID":idClient
   }
   socket.emit('CONNECT',JsonCONNECT);
 } 
@@ -26,7 +31,14 @@ socket.on("CONNACK", (JsonCONNACK) => {
   
 });
 
-  return (<button onClick = {handleClick}> Conectarse </button>);
+  return (
+    <div>
+      <input ref = {textInputIDClient}></input>
+      <button onClick = {handleClick}>
+        Conectarse 
+      </button>
+    </div>
+  );
 }
 
 export default ButtonConnect;
