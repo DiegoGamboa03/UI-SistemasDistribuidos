@@ -13,7 +13,7 @@ function PublishSubscriber(){
   let [message, setMessage] = useState("off");
 
   socket.on("PUBLISH", (jsonPUBLISH) => {
-    
+    setMessage(jsonPUBLISH['Message']);
   });
 
   return (<div>

@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 
 export const SocketContext = createContext();
 
-const socketFixed = io('192.168.0.105:4000');
+const socketFixed = io('192.168.0.107:4000');
 
 export const SocketProvider = ({ children }) => {
 
